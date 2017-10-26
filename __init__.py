@@ -17,14 +17,14 @@ class YaraChallenge(challenges.BaseChallenge):
     name = "yarachallenge"
 
     templates = {  # Handlebars templates used for each aspect of challenge editing & viewing
-        'create': '/plugins/yarachallenge/assets/yarachallenge-challenge-create.hbs',
-        'update': '/plugins/yarachallenge/assets/yarachallenge-challenge-update.hbs',
-        'modal': '/plugins/yarachallenge/assets/yarachallenge-challenge-modal.hbs',
+        'create': '/plugins/CTFd-yarachallenge/assets/yarachallenge-challenge-create.hbs',
+        'update': '/plugins/CTFd-yarachallenge/assets/yarachallenge-challenge-update.hbs',
+        'modal': '/plugins/CTFd-yarachallenge/assets/yarachallenge-challenge-modal.hbs',
     }
     scripts = {  # Scripts that are loaded when a template is loaded
-        'create': '/plugins/yarachallenge/assets/yarachallenge-challenge-create.js',
-        'update': '/plugins/yarachallenge/assets/yarachallenge-challenge-update.js',
-        'modal': '/plugins/yarachallenge/assets/yarachallenge-challenge-modal.js',
+        'create': '/plugins/CTFd-yarachallenge/assets/yarachallenge-challenge-create.js',
+        'update': '/plugins/CTFd-yarachallenge/assets/yarachallenge-challenge-update.js',
+        'modal': '/plugins/CTFd-yarachallenge/assets/yarachallenge-challenge-modal.js',
     }
 
     def attempt(chal, request):
@@ -227,9 +227,9 @@ def yara_rule_tester(provided_key):
     results = []
     try:
         rules = yara.compile(source=provided_key)
-        malz_path = os.listdir('CTFd/plugins/yarachallenge/assets/malware')
+        malz_path = os.listdir('CTFd/plugins/CTFd-yarachallenge/assets/malware')
         for file_names in malz_path:
-            test_file = ('CTFd/plugins/yarachallenge/assets/malware/' + file_names)
+            test_file = ('CTFd/plugins/CTFd-yarachallenge/assets/malware/' + file_names)
             matches = rules.match(test_file)
             if matches:
                 match_name = str(file_names)
@@ -242,7 +242,7 @@ def yara_rule_tester(provided_key):
 
 def load(app):
     """load overrides for yarachallenge plugin to work properly"""
-    register_plugin_assets_directory(app, base_path='/plugins/yarachallenge/assets/')
+    register_plugin_assets_directory(app, base_path='/plugins/CTFd-yarachallenge/assets/')
     challenges.CHALLENGE_CLASSES["yarachallenge"] = YaraChallenge
     app.view_functions['challenges.chal'] = chal
     app.view_functions['challenges.get_chal_class'] = get_chal_class
