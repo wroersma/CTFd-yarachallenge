@@ -4,20 +4,11 @@ This plugin allows you to create challenges that give players points by awards f
 
 
 #Setup
-Note: You must have the multianswer plugin installed 
+Note: You must install the CTFd-multi-answer plugin first  
+    
+    git clone https://github.com/wroersma/CTFd-multi-answer
+    git clone https://github.com/wroersma/CTFd-yarachallenge
 
-
-    git pull https://github.com/wroersma/CTFd-multi-answer /path-to-CTFd/CTFd/plugins/multianswer/
-    Clone yara-challenge  into the dir /CTFd/plugins/
-
-
-#Edit config
-```    
-vim /path-to-CTFd/CTFd/plugins/multianswer/__init__.py
-comment out the last line
-#app.view_functions['challenges.chal'] = chal
- 
-```
 
 #Questions
 
